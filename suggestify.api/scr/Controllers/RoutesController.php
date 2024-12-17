@@ -18,7 +18,7 @@
 class RoutesController{
 
     public function inicio(){
-        include "src/Routes/Routes.php";
+        include "scr/Routes/Routes.php";
     }
 
 }

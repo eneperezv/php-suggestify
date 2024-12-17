@@ -16,35 +16,35 @@
  */
 
 // LIBRERIAS
-require_once "src/Libs/firebase-php-jwt/JWTExceptionWithPayloadInterface.php";
-require_once "src/Libs/firebase-php-jwt/BeforeValidException.php";
-require_once "src/Libs/firebase-php-jwt/CachedKeySet.php";
-require_once "src/Libs/firebase-php-jwt/ExpiredException.php";
-require_once "src/Libs/firebase-php-jwt/JWK.php";
-require_once "src/Libs/firebase-php-jwt/JWT.php";
-require_once "src/Libs/firebase-php-jwt/Key.php";
-require_once "src/Libs/firebase-php-jwt/SignatureInvalidException.php";
+require_once "scr/Libs/firebase-php-jwt/JWTExceptionWithPayloadInterface.php";
+require_once "scr/Libs/firebase-php-jwt/BeforeValidException.php";
+require_once "scr/Libs/firebase-php-jwt/CachedKeySet.php";
+require_once "scr/Libs/firebase-php-jwt/ExpiredException.php";
+require_once "scr/Libs/firebase-php-jwt/JWK.php";
+require_once "scr/Libs/firebase-php-jwt/JWT.php";
+require_once "scr/Libs/firebase-php-jwt/Key.php";
+require_once "scr/Libs/firebase-php-jwt/SignatureInvalidException.php";
 
 // APP
 // UTILS
-require_once "src/Utils/EnvLoader.php";
-require_once "src/Utils/Logger.php";
-require_once "src/Utils/Response.php";
-require_once "src/Utils/Utils.php";
-require_once "src/Utils/Validator.php";
+require_once "scr/Utils/EnvLoader.php";
+require_once "scr/Utils/Logger.php";
+require_once "scr/Utils/Response.php";
+require_once "scr/Utils/Utils.php";
+require_once "scr/Utils/Validator.php";
 // CONTROLLERS
-require_once "src/Controllers/AuthController.php";
-// require_once "src/Controllers/AuthorController.php";
-// require_once "src/Controllers/PostController.php";
-// require_once "src/Controllers/RoutesController.php";
+require_once "scr/Controllers/RoutesController.php";
+require_once "scr/Controllers/AuthController.php";
+// require_once "scr/Controllers/AuthorController.php";
+// require_once "scr/Controllers/PostController.php";
 // DATA ACCESS
-// require_once "src/DataAccess/AuthorDal.php";
-// require_once "src/DataAccess/PostDal.php";
-// require_once "src/DataAccess/UserDal.php";
+// require_once "scr/DataAccess/AuthorDal.php";
+// require_once "scr/DataAccess/PostDal.php";
+require_once "scr/DataAccess/UserDal.php";
 // MODELS
-// require_once "src/Models/Author.php";
-require_once "src/Models/Connection.php";
-// require_once "src/Models/Post.php";
-// require_once "src/Models/User.php";
+// require_once "scr/Models/Author.php";
+require_once "scr/Models/Connection.php";
+// require_once "scr/Models/Post.php";
+require_once "scr/Models/User.php";
 
 ?>

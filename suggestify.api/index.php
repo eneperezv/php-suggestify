@@ -2,7 +2,7 @@
 
 date_default_timezone_set('America/Bogota');
 
-include "src/Libs/load.php";
+include "scr/Libs/load.php";
 
 try {
     // LOAD DE ARCHIVO .env
