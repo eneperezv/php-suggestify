@@ -18,9 +18,18 @@
 class Connection{
 
     public static function connect(){
-        $link = new PDO("mysql:host=localhost;dbname=suggestify","root","");
+
+        $dbhost = EnvLoader::get('DB_HOST');
+        $dbname = EnvLoader::get('DB_NAME');
+        $dbuser = EnvLoader::get('DB_USER');
+        $dbpwd  = EnvLoader::get('DB_PASS');
+
+        $urlConnection = "mysql:host=".$dbhost.";dbname=".$dbname."";
+        
+        $link = new PDO($urlConnection,$dbuser,$dbpwd);
         $link->exec("set names utf8");
         return $link;
+        
     }
 
 }

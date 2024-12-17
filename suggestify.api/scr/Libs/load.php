@@ -26,6 +26,12 @@ require_once "src/Libs/firebase-php-jwt/Key.php";
 require_once "src/Libs/firebase-php-jwt/SignatureInvalidException.php";
 
 // APP
+// UTILS
+require_once "src/Utils/EnvLoader.php";
+require_once "src/Utils/Logger.php";
+require_once "src/Utils/Response.php";
+require_once "src/Utils/Utils.php";
+require_once "src/Utils/Validator.php";
 // CONTROLLERS
 require_once "src/Controllers/AuthController.php";
 // require_once "src/Controllers/AuthorController.php";
@@ -40,11 +46,5 @@ require_once "src/Controllers/AuthController.php";
 require_once "src/Models/Connection.php";
 // require_once "src/Models/Post.php";
 // require_once "src/Models/User.php";
-// UTILS
-require_once "src/Utils/EnvLoader.php";
-require_once "src/Utils/Logger.php";
-require_once "src/Utils/Response.php";
-require_once "src/Utils/Utils.php";
-require_once "src/Utils/Validator.php";
 
 ?>
