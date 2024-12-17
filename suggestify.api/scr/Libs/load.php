@@ -35,7 +35,7 @@ require_once "scr/Utils/Validator.php";
 // CONTROLLERS
 require_once "scr/Controllers/RoutesController.php";
 require_once "scr/Controllers/AuthController.php";
-// require_once "scr/Controllers/AuthorController.php";
+require_once "scr/Controllers/UserController.php";
 // require_once "scr/Controllers/PostController.php";
 // DATA ACCESS
 // require_once "scr/DataAccess/AuthorDal.php";

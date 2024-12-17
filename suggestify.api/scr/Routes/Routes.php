@@ -56,12 +56,18 @@ if(count(array_filter($arrayRutas)) == 2){
                 // Captura los datos enviados en el cuerpo de la solicitud
                 $data = json_decode(file_get_contents("php://input"), true);
 
-                if (isset($data['email']) && 
+                /*if (isset($data['email']) && 
                         isset($data['password']) && 
                         isset($data['role']) && 
                         isset($data['name']) && 
                         isset($data['phone']) && 
-                        isset($data['timezone'])
+                        isset($data['timezone'])*/
+                if (isset($data['email']) && 
+                        isset($data['password']) /*&& 
+                        isset($data['role']) && 
+                        isset($data['name']) && 
+                        isset($data['phone']) && 
+                        isset($data['timezone'])*/
                     ) {
                     AuthController::register($data);
                 } else {
@@ -95,6 +101,46 @@ if(count(array_filter($arrayRutas)) == 2){
             }
         }
     }elseif(count(array_filter($arrayRutas)) >= 4){
+        // ------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------
+        // MODULE: /user
+        // ------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------
+        if (array_filter($arrayRutas)[3] == "user"){
+            // ------------------------------------------------------------------------------------------------
+            // ------------------------------------------------------------------------------------------------
+            // ENDPOINT: /user/update
+            // ------------------------------------------------------------------------------------------------
+            // ------------------------------------------------------------------------------------------------
+            if (array_filter($arrayRutas)[4] == "update"){
+                if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == "POST") {
+
+                    $headers = function_exists('getallheaders') ? getallheaders() : [];
+                    $errors = Utils::headerTokenValidate($headers);
+                    if (!empty($errors)) {
+                        return Response::error('Ha ocurrido un error en la solicitud.', $errors, 422);
+                        exit();
+                    }
+
+                    $data = json_decode(file_get_contents("php://input"), true);
+                    if (isset($data['email']) && 
+                        isset($data['password']) && 
+                        isset($data['role']) && 
+                        isset($data['name']) && 
+                        isset($data['phone']) && 
+                        isset($data['timezone'])
+                        ) {
+                        UserController::update($data);
+                    } else {
+                        $err = array('error' => 'Faltan datos necesarios.');
+                        Response::error('Bad Request', $err, 400);
+                    }
+                } else {
+                    $err = array('error' => 'Método no permitido.');
+                    Response::error("Method Not Allowed", $err, 405);
+                }
+            }
+        }
         // ------------------------------------------------------------------------------------------------
         // ------------------------------------------------------------------------------------------------
         // MODULE: /post
