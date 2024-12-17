@@ -54,7 +54,7 @@ class UserDal{
 
     public static function create($data, $password) {
         $db = Connection::connect();
-        // deberia ser solo con email y password
+        
         try {
             $db->beginTransaction();
             $stmt = $db->prepare("INSERT INTO users (name, email, phone, password, role, timezone) 
