@@ -33,7 +33,7 @@ class User{
     }
 
     public static function create($data, $password) {
-        $result = UserDal::create($userId);
+        $result = UserDal::create($data, $password);
         return $result === false ? [] : $result;
     }
 

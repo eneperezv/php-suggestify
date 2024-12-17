@@ -52,7 +52,7 @@ class UserDal{
         return $result === false ? [] : $result;
     }
 
-    public static function create($data) {
+    public static function create($data, $password) {
         $db = Connection::connect();
         // deberia ser solo con email y password
         try {
@@ -62,7 +62,7 @@ class UserDal{
             $stmt->bindParam(":name", $data['name'], \PDO::PARAM_STR);
             $stmt->bindParam(":email", $data['email'], \PDO::PARAM_STR);
             $stmt->bindParam(":phone", $data['phone'], \PDO::PARAM_STR);
-            $stmt->bindParam(":password", $data['password'], \PDO::PARAM_STR);
+            $stmt->bindParam(":password", $password, \PDO::PARAM_STR);
             $stmt->bindParam(":role", $data['role'], \PDO::PARAM_STR);
             $stmt->bindParam(":timezone", $data['timezone'], \PDO::PARAM_STR);
             $stmt->execute();

@@ -69,7 +69,7 @@ class AuthController{
                 $err = array('error' => 'El usuario ya está registrado.');
                 return Response::error('Ha ocurrido un error en la solicitud.', $err, 422);
             }
-            if (User::create($data,$hashedPassword)) { //aqui ocurre el error
+            if (User::create($data,$hashedPassword)) {
                 $userDetails = User::findByEmail($email);
                 return Response::success('Usuario registrado con éxito.', $userDetails, 201, 'user');
             } else {
