@@ -4,8 +4,12 @@ class UserController{
 
     public static function update($data) {
 
-        $errors = Validator::validateConsultaPorId($postId);
+        $userData = User::findByEmail($data['email']);
+        if(empty($userData)) {
+            return Response::error('No hay usuarios registrados con el email proporcionado.', $data, 400);
+        }
         
+        $errors = Validator::validateDataUserUpdate($data);
         if (!empty($errors)) {
             return Response::error('Ha ocurrido un error en la solicitud.', $errors, 422);
         }

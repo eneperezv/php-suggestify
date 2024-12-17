@@ -76,6 +76,33 @@ class Validator {
         }
         return $errors;
     }
+    
+    // VALIDACION DE DATOS PARA UPDATE DE USUARIO
+    public static function validateDataUserUpdate($data): array {
+        $errors = [];
+        if (!self::validateInteger($data['id'])) {
+            $errors[] = "El id de usuario no es un número entero válido.";
+        }
+        if (!self::validateEmail($email)) {
+            $errors[] = "El correo electrónico no es válido.";
+        }
+        return $errors;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // VALIDACION DE DATOS PARA POST
     public static function validateDataPost($data): array {
