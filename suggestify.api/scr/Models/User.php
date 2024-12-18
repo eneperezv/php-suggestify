@@ -37,6 +37,11 @@ class User{
         return $result === false ? [] : $result;
     }
 
+    public static function update($data){
+        $result = UserDal::update($data);
+        return $result === false ? [] : $result;
+    }
+
 }
 
 ?>
