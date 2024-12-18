@@ -80,19 +80,12 @@ class UserDal{
         $db = Connection::connect();
 
         try {
-    
-            // Validar y filtrar datos no vacíos
             $fields = [];
             $params = [];
     
-            // Verificar cada campo en el arreglo
             if (!empty($data['name'])) {
                 $fields[] = "name = :name";
                 $params[':name'] = $data['name'];
-            }
-            if (!empty($data['email'])) {
-                $fields[] = "email = :email";
-                $params[':email'] = $data['email'];
             }
             if (!empty($data['phone'])) {
                 $fields[] = "phone = :phone";
@@ -100,7 +93,7 @@ class UserDal{
             }
             if (!empty($data['password'])) {
                 $fields[] = "password = :password";
-                $params[':password'] = password_hash($data['password'], PASSWORD_BCRYPT); // Hash de contraseña
+                $params[':password'] = password_hash($data['password'], PASSWORD_DEFAULT);
             }
             if (!empty($data['role'])) {
                 $fields[] = "role = :role";
@@ -111,30 +104,23 @@ class UserDal{
                 $params[':timezone'] = $data['timezone'];
             }
     
-            // Si no hay campos válidos para actualizar, detener la ejecución
             if (empty($fields)) {
                 throw new Exception("No hay datos válidos para actualizar.");
             }
     
-            // Construir la consulta SQL dinámica
-            $sql = "UPDATE users SET " . implode(", ", $fields) . " WHERE id = :id";
-            $params[':id'] = $id;
+            $sql = "UPDATE users SET " . implode(", ", $fields) . ", updated_at = now() WHERE id = :id";
+            $params[':id'] = $data['id'];
     
-            // Iniciar transacción
             $db->beginTransaction();
     
-            // Preparar y ejecutar la consulta
             $stmt = $db->prepare($sql);
             $stmt->execute($params);
     
-            // Confirmar transacción
             $db->commit();
     
-            // Retornar el usuario actualizado
-            return self::findById($id);
+            return self::findById($data['id']);
     
         } catch (PDOException $e) {
-            // Revertir cambios en caso de error
             $db->rollBack();
             throw new Exception("Error al actualizar el usuario: " . $e->getMessage());
         }

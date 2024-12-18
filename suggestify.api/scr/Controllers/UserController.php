@@ -15,12 +15,12 @@ class UserController{
         }
 
         try {
-            $postDetails = Post::findById($postId);
+            $userDetails = User::update($data);
 
-            if ($postDetails) {
-                return Response::success('Consulta de datos', $postDetails, 200, 'post');
+            if ($userDetails) {
+                return Response::success('Actualizacion de usuario', $userDetails, 200, 'user');
             } else {
-                $err = array('error' => 'Error al consultar el post.');
+                $err = array('error' => 'Error al consultar el usuario.');
                 return Response::error('Ha ocurrido un error en la solicitud.', $err, 422);
             }
         } catch (\Exception $e) {

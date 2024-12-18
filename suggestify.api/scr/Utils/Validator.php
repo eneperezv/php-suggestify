@@ -83,7 +83,7 @@ class Validator {
         if (!self::validateInteger($data['id'])) {
             $errors[] = "El id de usuario no es un número entero válido.";
         }
-        if (!self::validateEmail($email)) {
+        if (!self::validateEmail($data['email'])) {
             $errors[] = "El correo electrónico no es válido.";
         }
         return $errors;
